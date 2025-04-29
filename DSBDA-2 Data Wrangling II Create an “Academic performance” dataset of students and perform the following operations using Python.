@@ -30,3 +30,5 @@ col=['Eng_marks']
 df.boxplot(col)
 
 plt.show()
+
+df.dropna(axis=1)
