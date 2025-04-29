@@ -1,0 +1,44 @@
+import pandas as pd
+import numpy as np
+
+d = pd.read_csv(r"C:\Users\samik\Downloads\data.csv")
+d
+
+d['income'].mean()
+
+d['age'].mean()
+
+d['income'].median()
+
+d['age'].mean()
+
+d['income'].mode()
+
+d['age'].mode()
+
+d['age'].min()
+
+d['income'].min()
+
+d['income'].max()
+
+d['age'].max()
+
+d['income'].std()
+
+d['age'].std()
+
+d['income'].sum()
+
+d['age'].sum()
+
+d.groupby(['gender'])['age'].mean()
+
+import sklearn
+
+from sklearn.preprocessing import LabelEncoder
+le = LabelEncoder()
+d['gender']=le.fit_transform(d['gender'])
+
+d
+
