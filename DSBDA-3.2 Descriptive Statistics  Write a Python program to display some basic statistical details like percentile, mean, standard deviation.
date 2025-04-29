@@ -1,0 +1,26 @@
+import pandas as pd
+import numpy as np 
+
+d = pd.read_csv(r"C:\Users\samik\Downloads\Iris.csv")
+d
+
+d.groupby(['Species'])['PetalLengthCm'].mean()
+
+d.groupby(['Species'])['PetalLengthCm'].std()
+
+d.groupby(['Species'])['SepalLengthCm'].mean()
+
+d.groupby(['Species'])['SepalLengthCm'].std()
+
+
+sort1 = sorted(d['SepalLengthCm'])
+np.percentile(sort1,25)
+
+sort1 = sorted(d['SepalWidthCm'])
+np.percentile(sort1,25)
+
+sort1 = sorted(d['PetalLengthCm'])
+np.percentile(sort1,25)
+
+sort1 = sorted(d['PetalWidthCm'])
+np.percentile(sort1,25)
