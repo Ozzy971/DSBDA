@@ -1,0 +1,57 @@
+import pandas as pd
+import numpy as np
+
+d = {
+    'cars': ["BMW", "Volvo", "Ford"],
+    'passings': [3,7,2]
+}
+data = pd.DataFrame(d)
+print(data)
+
+df = pd.read_csv(r"C:\Users\samik\Downloads\Iris.csv")
+df
+
+df.info()
+
+df.head()
+
+df.tail()
+
+pd.isnull("Iris.csv")
+
+df.isnull()
+
+df.notnull()
+
+df.describe()
+
+df.isnull().sum()
+
+df.notnull().sum()
+
+data.dtypes
+
+df.dtypes
+
+df.SepalLengthCm.dtypes
+
+df['SepalLengthCm'].dtypes
+
+df.select_dtypes(include = 'int64')
+
+df.select_dtypes(include = 'float64')
+
+df.select_dtypes(include = 'object')
+
+a =[1,7,2]
+ps = pd.Series(a)
+print(ps)
+
+print(ps[1])
+
+print(ps[0])
+
+b =[1,7,2]
+ps = pd.Series(b, index = ["x","y","z"])
+print(ps)
+
