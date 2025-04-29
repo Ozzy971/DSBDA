@@ -1,0 +1,32 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+df = pd.read_csv(r"C:\Users\samik\OneDrive\Desktop\StudentSheet.csv")
+df
+
+series = pd.notnull(df["Maths_marks"])
+print(series)
+
+df.isnull()
+
+df.notnull()
+
+df.dropna()
+
+df.dropna(how='all')
+
+col=['Maths_marks','Phy_marks','History_marks','Eng_marks']
+
+df.boxplot(col)
+
+fig, ax = plt.subplots(figsize = (18,10)) 
+ax.scatter(df['Phy_marks'], df['History_marks']) 
+
+plt.show()
+
+col=['Eng_marks']
+
+df.boxplot(col)
+
+plt.show()
