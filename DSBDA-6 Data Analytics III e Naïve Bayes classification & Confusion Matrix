@@ -1,0 +1,48 @@
+import pandas as pd
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, f1_score
+from sklearn.datasets import load_iris
+import matplotlib.pyplot as plt
+
+url = "https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"
+col = ['sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'class']
+data = pd.read_csv(url, header=None, names = col)
+
+data.head()
+
+iris = load_iris()
+X = iris.data  
+y = iris.target
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+nb_classifier = GaussianNB()
+nb_classifier.fit(X_train, y_train)
+
+y_pred = nb_classifier.predict(X_test)
+
+cm = confusion_matrix(y_test, y_pred)
+
+accuracy = accuracy_score(y_test, y_pred)
+error_rate = 1 - accuracy
+precision = precision_score(y_test, y_pred, average='weighted')
+recall = recall_score(y_test, y_pred, average='weighted')
+f1 = f1_score(y_test, y_pred, average='weighted')
+
+print("Confusion Matrix:")
+print(cm)
+
+print("\nPerformance Metrics:")
+print(f"Accuracy: {accuracy:.4f}")
+print(f"Error Rate: {error_rate:.4f}")
+print(f"Precision: {precision:.4f}")
+print(f"Recall: {recall:.4f}")
+print(f"F1 Score: {f1:.4f}")
+
+sns.heatmap(cm, annot=True, cmap="Blues", fmt="g", xticklabels=iris.target_names, yticklabels=iris.target_names)
+plt.xlabel("Predicted")
+plt.ylabel("Actual")
+plt.title("Confusion Matrix")
+plt.show()
