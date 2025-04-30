@@ -1,0 +1,25 @@
+import seaborn as sns
+import matplotlib.pyplot as plt
+import pandas as pd
+
+dataset = sns.load_dataset('titanic')
+dataset.head()
+
+sns.distplot(x = dataset['age'], bins = 10)
+
+sns.jointplot(x = dataset['age'], y = dataset['fare'], kind = 'scatter') 
+
+sns.rugplot(dataset['fare'])
+
+sns.barplot(x='sex', y='age', hue='sex' , data=dataset)
+
+sns.countplot(x='sex', hue='sex' , data=dataset)
+
+sns.boxplot(x='sex', y='age', hue='sex' , data=dataset)
+
+sns.violinplot(x='sex', y='age', hue='sex', data=dataset)
+
+sns.stripplot(x='sex', y='age', hue='sex' , data=dataset, jitter=True)
+
+sns.swarmplot(x='sex', y='age', hue='sex' , data=dataset)
+
