@@ -1,0 +1,24 @@
+import seaborn as sns
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+data = sns.load_dataset('titanic')
+data.head()
+
+data.describe()
+
+data.info()
+
+data.isnull().sum()
+
+data['age'] = data['age'].fillna(np.mean(data['age']))
+data['deck'] = data['deck'].fillna(data['deck'].mode()[0])
+data['embarked'] = data['embarked'].fillna(data['embarked'].mode()[0])
+
+data.isnull().sum()
+
+sns.boxplot(x='sex', y='age', hue='survived', data=data, palette='Set2').set_title('Plot for distribution of age with respect to each gender along with the information about whether they survived or not')
+plt.show()
+
+ 
