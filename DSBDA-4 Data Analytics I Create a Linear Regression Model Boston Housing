@@ -60,7 +60,7 @@ xtrain, xtest, ytrain, ytest = train_test_split(x, y, test_size=0.2, random_stat
  
  mse = mean_squared_error(ytest, ytest_pred)
  print(mse)
- mse = mean_squared_error(ytrain_pred,ytrain)
+ mse = mean_squared_error(ytrain, ytrain_pred)
  print(mse)
  
  print(mse)
