@@ -1,60 +1,47 @@
-#Algorithm (Synthesis Dataset)
+
+ #Algorithm (California Dataset)
  
- import numpy as np
- import pandas as pd
- import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
  
- x=np.array([90,80,56,76,97])
+x=np.array([95,85,85,70,60])
+y=np.array([85,90,70,64,70])
+model= np.polyfit(x,y,1)
+model
+
+predict=np.poly1d(model)
+predict( 65)
+
+y_pred=predict(x)
+y_pred
+
+from sklearn.metrics import r2_score
+r2_score(y,y_pred)
+
+y_line= model[1] + model[0]* x
+plt.plot(x, y_line, c ='r')
+plt.scatter(x,y_pred)
+plt.scatter(x,y,c='r')
+
+import ssl
+from sklearn.datasets import fetch_california_housing
+ssl._create_default_https_context = ssl._create_unverified_context
+california= fetch_california_housing(download_if_missing = True) 
+x = california .data
+y = california .target
+
+df=pd.DataFrame(california.data,columns = california .feature_names)
+df
+
+data['PRICE']=california.target
+data.isnull().sum()
+
+x=df.drop(['PRICE'],axis=1)
+y=df['PRICE']
  
- y=np.array([85,78,90,65,70])
- 
- model=np.polyfit(x , y , 1)
- 
- model
- 
- predict = np.poly1d(model)
- 
- predict(65)
- 
- y_pred=predict(x)
- y_pred
- 
- from sklearn.metrics import r2_score
- r2_score(y, y_pred)
- 
- y_line = model[1]+model[0]*x
- plt.plot(x,y_line, c = 'r')
- plt.scatter(x,y_pred)
- plt.scatter(x,y,c='r')
- 
- 
- 
- 
- 
- #Algorithm (Boston Dataset)
- 
- from sklearn.datasets import load_boston
- import pandas as pd
- import numpy as np
- 
- boston = load_boston()
- 
- data = pd.DataFrame(boston.data)
- 
- data.columns=boston.feature_names
- data.head()
- 
- data['PRICE']=boston.target
- 
- data.isnull().sum()
- 
- x=data.drop(['PRICE'],axis=1)
- 
- y=data['PRICE']
- 
- from sklearn.model_selection import train_test_split
-  
- xtrain, xtest, ytrain, ytest = train_test_split(x, y, test_size=0.2, random_state=32)
+from sklearn.model_selection import train_test_split
+xtrain, xtest, ytrain, ytest = train_test_split(x, y, test_size=0.2, random_state=)
  
  
  import sklearn
