@@ -41,7 +41,7 @@ x=df.drop(['PRICE'],axis=1)
 y=df['PRICE']
  
 from sklearn.model_selection import train_test_split
-xtrain, xtest, ytrain, ytest = train_test_split(x, y, test_size=0.2, random_state=)
+xtrain, xtest, ytrain, ytest = train_test_split(x, y, test_size=0.2, random_state=0)
  
  
  import sklearn
